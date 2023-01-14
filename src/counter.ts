@@ -1,5 +1,5 @@
 import { arg, fun } from './fun'
-import { id, int, uint } from './types'
+import { int } from './types'
 
 export function setupCounter(element: HTMLButtonElement) {
   let counter = int(-2)

@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { typeOf, shape, str, uint, arrOf, anyOf, id, opt } from '..'
+import { typeOf, shape, str, uint, anyOf, id, opt } from '..'
 
 describe('[Account->shape{...}]', () => {
     const Account = shape({
