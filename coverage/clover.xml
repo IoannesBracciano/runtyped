@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1673698215901" clover="3.2.0">
+  <project timestamp="1673698215901" name="All files">
+    <metrics statements="93" coveredstatements="90" conditionals="44" coveredconditionals="43" methods="33" coveredmethods="26" elements="170" coveredelements="159" complexity="0" loc="93" ncloc="93" packages="1" files="11" classes="11"/>
+    <file name="anyOf.ts" path="/Users/ioannes/Projects/runtyped/src/types/anyOf.ts">
+      <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="4" count="3" type="stmt"/>
+      <line num="5" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="6" count="3" type="cond" truecount="1" falsecount="0"/>
+    </file>
+    <file name="arr.ts" path="/Users/ioannes/Projects/runtyped/src/types/arr.ts">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+    </file>
+    <file name="arrOf.ts" path="/Users/ioannes/Projects/runtyped/src/types/arrOf.ts">
+      <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="cond" truecount="2" falsecount="0"/>
+      <line num="4" count="5" type="cond" truecount="1" falsecount="0"/>
+      <line num="5" count="2" type="cond" truecount="1" falsecount="0"/>
+    </file>
+    <file name="id.ts" path="/Users/ioannes/Projects/runtyped/src/types/id.ts">
+      <metrics statements="3" coveredstatements="3" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="cond" truecount="3" falsecount="0"/>
+    </file>
+    <file name="index.ts" path="/Users/ioannes/Projects/runtyped/src/types/index.ts">
+      <metrics statements="49" coveredstatements="49" conditionals="21" coveredconditionals="21" methods="18" coveredmethods="15"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="11" count="1" type="stmt"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="13" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="14" count="38" type="cond" truecount="1" falsecount="0"/>
+      <line num="15" count="2" type="stmt"/>
+      <line num="16" count="2" type="cond" truecount="1" falsecount="0"/>
+      <line num="17" count="36" type="cond" truecount="1" falsecount="0"/>
+      <line num="18" count="550" type="cond" truecount="1" falsecount="0"/>
+      <line num="19" count="338" type="stmt"/>
+      <line num="20" count="338" type="cond" truecount="1" falsecount="0"/>
+      <line num="21" count="212" type="stmt"/>
+      <line num="22" count="550" type="stmt"/>
+      <line num="23" count="36" type="stmt"/>
+      <line num="24" count="36" type="stmt"/>
+      <line num="25" count="36" type="stmt"/>
+      <line num="26" count="36" type="stmt"/>
+      <line num="27" count="33" type="cond" truecount="1" falsecount="0"/>
+      <line num="28" count="1" type="stmt"/>
+      <line num="29" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="30" count="5" type="cond" truecount="1" falsecount="0"/>
+      <line num="31" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="32" count="5" type="stmt"/>
+      <line num="33" count="5" type="stmt"/>
+      <line num="34" count="5" type="cond" truecount="1" falsecount="0"/>
+      <line num="35" count="1" type="stmt"/>
+      <line num="36" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="37" count="18" type="stmt"/>
+      <line num="38" count="15" type="cond" truecount="1" falsecount="0"/>
+      <line num="39" count="1" type="stmt"/>
+      <line num="40" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="41" count="1" type="stmt"/>
+      <line num="42" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="43" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="44" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="45" count="1" type="stmt"/>
+      <line num="46" count="1" type="stmt"/>
+      <line num="47" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="48" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="49" count="1" type="cond" truecount="1" falsecount="0"/>
+    </file>
+    <file name="int.ts" path="/Users/ioannes/Projects/runtyped/src/types/int.ts">
+      <metrics statements="6" coveredstatements="6" conditionals="3" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="4" count="530" type="cond" truecount="0" falsecount="1"/>
+      <line num="5" count="530" type="stmt"/>
+      <line num="6" count="530" type="cond" truecount="1" falsecount="0"/>
+    </file>
+    <file name="num.ts" path="/Users/ioannes/Projects/runtyped/src/types/num.ts">
+      <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="4" count="0" type="stmt"/>
+      <line num="5" count="0" type="stmt"/>
+      <line num="6" count="0" type="stmt"/>
+    </file>
+    <file name="opt.ts" path="/Users/ioannes/Projects/runtyped/src/types/opt.ts">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="stmt"/>
+    </file>
+    <file name="shape.ts" path="/Users/ioannes/Projects/runtyped/src/types/shape.ts">
+      <metrics statements="6" coveredstatements="6" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="2"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="5" count="1" type="cond" truecount="2" falsecount="0"/>
+      <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
+    </file>
+    <file name="str.ts" path="/Users/ioannes/Projects/runtyped/src/types/str.ts">
+      <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="cond" truecount="2" falsecount="0"/>
+    </file>
+    <file name="uint.ts" path="/Users/ioannes/Projects/runtyped/src/types/uint.ts">
+      <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="3" count="1" type="cond" truecount="2" falsecount="0"/>
+    </file>
+  </project>
+</coverage>
