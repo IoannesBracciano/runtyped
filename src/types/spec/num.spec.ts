@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest'
 import { num, typeOf } from '..'
 
-describe('[int]', () => {
+describe('[num]', () => {
 
     test('has correct type name', () => {
         expect(typeOf(num)).toBe('num')
