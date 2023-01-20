@@ -21,6 +21,9 @@ export function createType(name: string, assert: TypeAssertion) {
         return value
     }
     initialize.assert = assert
+    initialize.toString = function Type_toString() {
+        return name
+    }
     typedefs.set(name, initialize)
     typedefsrev.set(initialize, name)
     return initialize
