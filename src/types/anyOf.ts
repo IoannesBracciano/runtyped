@@ -1,4 +1,4 @@
-import { createType, Type, typeOf } from '.'
+import { createType, Type, typeOf } from '../runtyped'
 
 export const anyOf = (...types: Type[]) => createType(
     `anyOf<${types.map(typeOf).join(',')}>`, 

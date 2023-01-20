@@ -1,4 +1,4 @@
-import { createType, Type, typeOf } from '.'
+import { createType, Type, typeOf } from '../runtyped'
 
 export const opt = (type: Type) => createType(
     `opt<${typeOf(type)}>`,

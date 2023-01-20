@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'vitest'
-import { typeOf, shape, str, uint, anyOf, id, opt } from '..'
+import { shape, str, uint, anyOf, id, opt } from '..'
+import { typeOf } from '../../runtyped'
 
 describe('[*Account]', () => {
     const Account = shape({

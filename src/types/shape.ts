@@ -1,4 +1,4 @@
-import { createType, Type, typeOf } from '.'
+import { createType, Type, typeOf } from '../runtyped'
 
 export const shape = (def: Record<PropertyKey, Type>) => createType(
     `shape{${Object.entries(def).map(([key, type]) => `${key}:${typeOf(type)}`)}}`,

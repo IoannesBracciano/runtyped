@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'vitest'
-import { arr, typeOf } from '..'
+import { arr } from '..'
+import { typeOf } from '../../runtyped'
 
 describe('[arr]', () => {
 

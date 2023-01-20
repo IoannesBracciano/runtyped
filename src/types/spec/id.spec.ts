@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'vitest'
-import { id, typeOf } from '..'
+import { id } from '..'
+import { typeOf } from '../../runtyped'
 
 describe('[id<true>]', () => {
     const True = id(true)

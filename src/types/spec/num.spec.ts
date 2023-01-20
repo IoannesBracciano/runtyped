@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'vitest'
-import { num, typeOf } from '..'
+import { num } from '..'
+import { typeOf } from '../../runtyped'
 
 describe('[num]', () => {
 
