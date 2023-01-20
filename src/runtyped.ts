@@ -8,7 +8,7 @@ export type TypedFunctionScope = {
     readonly function: Function
 }
 
-export function fun(impl: Function) {
+export function fn(impl: Function) {
     return (...args: unknown[]) => {
         switchScopes(impl, args)
         return impl()
@@ -33,7 +33,7 @@ const switchScopes = (f: Function, args: unknown[]) => {
     })
 }
 
-export const arg = (type: Type, defval: unknown = undefined) => {
+export const a = (type: Type, defval: unknown = undefined) => {
     const argval = scope?.args?.next
     return type(argval !== undefined ? argval : defval)
 }
