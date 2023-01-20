@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'vitest'
 import { arr } from '..'
-import { typeOf } from '../../runtyped'
+import { typename } from '../../runtyped'
 
 describe('[arr]', () => {
 
     test('has correct type name', () => {
-        expect(typeOf(arr)).toBe('arr')
+        expect(typename(arr)).toBe('arr')
     })
 
     test('returns any array value it was called with back to the caller', () => {

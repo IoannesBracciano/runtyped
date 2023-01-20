@@ -1,6 +1,6 @@
-import { createType, Type, typeOf } from '../runtyped'
+import { createType, Type, typename } from '../runtyped'
 
 export const opt = (type: Type) => createType(
-    `opt<${typeOf(type)}>`,
+    `opt<${typename(type)}>`,
     value => type.assert(value) || value === undefined,
 )

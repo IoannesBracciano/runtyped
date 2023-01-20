@@ -1,13 +1,13 @@
 import { describe, expect, test } from 'vitest'
 import { opt, str } from '..'
-import { typeOf } from '../../runtyped'
+import { typename } from '../../runtyped'
 
 describe('[opt<str>]', () => {
 
     const optStr = opt(str)
 
     test('has correct type name', () => {
-        expect(typeOf(optStr)).toBe('opt<str>')
+        expect(typename(optStr)).toBe('opt<str>')
     })
 
     test('returns the string value it was called with back to the caller', () => {

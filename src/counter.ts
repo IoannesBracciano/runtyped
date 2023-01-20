@@ -1,5 +1,5 @@
-import { A, a, fn } from './runtyped'
-import { arr, int } from './types'
+import { a, fn } from './runtyped'
+import { int } from './types'
 
 export function setupCounter(element: HTMLButtonElement) {
   let counter = 0

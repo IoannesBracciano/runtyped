@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'vitest'
 import { num } from '..'
-import { typeOf } from '../../runtyped'
+import { typename } from '../../runtyped'
 
 describe('[num]', () => {
 
     test('has correct type name', () => {
-        expect(typeOf(num)).toBe('num')
+        expect(typename(num)).toBe('num')
     })
 
     test('returns the numeric value it was called with back to the caller', () => {

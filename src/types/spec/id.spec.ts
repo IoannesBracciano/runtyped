@@ -1,12 +1,12 @@
 import { describe, expect, test } from 'vitest'
 import { id } from '..'
-import { typeOf } from '../../runtyped'
+import { typename } from '../../runtyped'
 
 describe('[id<true>]', () => {
     const True = id(true)
 
     test('has correct type name', () => {
-        expect(typeOf(True)).toBe('id<true>')
+        expect(typename(True)).toBe('id<true>')
     })
     
     test('only accepts boolean `true` and does no coercions', () => {
@@ -22,7 +22,7 @@ describe('[id<false>]', () => {
     const False = id(false)
 
     test('has correct type name literal', () => {
-        expect(typeOf(False)).toBe('id<false>')
+        expect(typename(False)).toBe('id<false>')
     })
 
     test('only accepts boolean `false` and does no coercions', () => {
@@ -39,7 +39,7 @@ describe('[id<0>]', () => {
     const Zero = id(0)
 
     test('has correct type name literal', () => {
-        expect(typeOf(Zero)).toBe('id<0>')
+        expect(typename(Zero)).toBe('id<0>')
     })
 
     test('only accepts numeric `0` and does no coercions', () => {
@@ -55,7 +55,7 @@ describe('[id<1>]', () => {
     const One = id(1)
 
     test('has correct type name literal', () => {
-        expect(typeOf(One)).toBe('id<1>')
+        expect(typename(One)).toBe('id<1>')
     })
 
     test('only accepts numeric `1` and does no coercions', () => {

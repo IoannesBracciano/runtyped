@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'vitest'
 import { uint } from '..'
-import { typeOf } from '../../runtyped'
+import { typename } from '../../runtyped'
 
 describe('[uint]', () => {
 
     test('has correct type name', () => {
-        expect(typeOf(uint)).toBe('uint')
+        expect(typename(uint)).toBe('uint')
     })
 
     test('accepts any positive integer value, including `0`', () => {

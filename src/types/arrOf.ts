@@ -1,5 +1,5 @@
-import { createType, Type, typeOf } from '../runtyped'
+import { createType, Type, typename } from '../runtyped'
 
-export const arrOf = (type: Type) => createType(`arrOf<${typeOf(type)}>`, value => (
+export const arrOf = (type: Type) => createType(`arrOf<${typename(type)}>`, value => (
     Array.isArray(value) && value.every(type.assert)
 ))

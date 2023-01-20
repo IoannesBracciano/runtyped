@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
 import { shape, str, uint, anyOf, id, opt } from '..'
-import { typeOf } from '../../runtyped'
+import { typename } from '../../runtyped'
 
 describe('[*Account]', () => {
     const Account = shape({
@@ -16,7 +16,7 @@ describe('[*Account]', () => {
     })
 
     test('has correct type name', () => {
-        expect(typeOf(Account)).toBe('shape{createdAt:uint,id:str,locale:anyOf<id<en_US>,id<es_MX>>,user:shape{birthday:opt<uint>,id:str,name:str,photoUrl:opt<str>}}')
+        expect(typename(Account)).toBe('shape{createdAt:uint,id:str,locale:anyOf<id<en_US>,id<es_MX>>,user:shape{birthday:opt<uint>,id:str,name:str,photoUrl:opt<str>}}')
     })
 
     test('returns objects that match the specified shape back to the caller', () => {

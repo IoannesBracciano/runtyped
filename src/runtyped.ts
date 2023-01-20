@@ -78,6 +78,6 @@ export const A = (...types: (Type[]) | ([Type, unknown][])) => {
     return types.map(type => Array.isArray(type) ? a(...type) : a(type))
 }
 
-export function typeOf(type: Type) {
+export function typename(type: Type) {
     return typedefsrev.get(type)
 }
