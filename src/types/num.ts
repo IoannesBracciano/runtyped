@@ -1,6 +1,6 @@
-import { createType } from '../runtyped'
+import { createType, Type } from '../runtyped'
 
-export const num = createType('num', (value: any) => {
+export const num: Type<number> = createType('num', (value: any) => {
     const primitive = (value instanceof Number) ? +value : value
     return Number.isFinite(primitive)
 })

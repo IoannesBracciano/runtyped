@@ -1,3 +1,3 @@
-import { createType } from '../runtyped'
+import { createType, Type } from '../runtyped'
 
-export const arr = createType(`arr`, value => Array.isArray(value))
+export const arr: Type<any[]> = createType(`arr`, value => Array.isArray(value))
