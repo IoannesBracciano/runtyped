@@ -1,4 +1,4 @@
-# runtype.d
+![Runtyped Logo](logo.png)
 ## Runtime assertions by assignment for JS
 ![](https://github.com/IoannesBracciano/runtyped/actions/workflows/nodejs-ci.yml/badge.svg)
 
