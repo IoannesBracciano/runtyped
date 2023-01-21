@@ -38,6 +38,7 @@ export function extendType(base: Type, name: string, assert: TypeAssertion) {
 
 export type TypedFunctionScope = {
     readonly args: {
+        readonly done: boolean
         readonly length: number
         readonly next: unknown
     }
@@ -47,7 +48,11 @@ export type TypedFunctionScope = {
 export function fn(impl: Function) {
     return (...args: unknown[]) => {
         switchScopes(impl, args)
-        return impl()
+        const rval = impl()
+        if (!scope?.args.done) {
+            throw new TypeError(`Too many args passed to ${impl}`)
+        }
+        return rval
     }
 }
 
@@ -57,6 +62,9 @@ const switchScopes = (f: Function, args: unknown[]) => {
     const argsIter = args[Symbol.iterator]()
     scope = Object.freeze({
         args: {
+            get done() {
+                return !!argsIter.next().done
+            },
             get length() {
                 return args.length
             },
