@@ -5,37 +5,6 @@ export type Type = {
 
 export type TypeAssertion = (value: any) => boolean
 
-export type TypeHint = 'default' | 'number' | 'string'
-
-const typedefs = new Map<string, Type>()
-const typedefsrev = new Map<Type, string>()
-
-export function createType(name: string, assert: TypeAssertion) {
-    if (typedefs.has(name)) {
-        return typedefs.get(name) as Type
-    }
-    function initialize(value: any) {
-        if (!assert(value)) {
-            throw new TypeError(`Cannot initialize type [${name}] with: ${value}.`)
-        }
-        return value
-    }
-    initialize.assert = assert
-    initialize.toString = function Type_toString() {
-        return name
-    }
-    typedefs.set(name, initialize)
-    typedefsrev.set(initialize, name)
-    return initialize
-}
-
-export function extendType(base: Type, name: string, assert: TypeAssertion) {
-    const assertAll = (...assertions: TypeAssertion[]): TypeAssertion => (
-        (value: unknown) => assertions.every(assert => assert(value))
-    )
-    return createType(name, assertAll(base.assert, assert))
-}
-
 export type TypedFunctionScope = {
     readonly args: {
         readonly done: boolean
@@ -45,6 +14,39 @@ export type TypedFunctionScope = {
     readonly function: Function
 }
 
+export type TypeHint = 'default' | 'number' | 'string'
+
+const typedefs = new Map<string, Type>()
+
+const typedefsrev = new Map<Type, string>()
+
+let scope: TypedFunctionScope | null = null
+
+export function createType(name: string, assert: TypeAssertion) {
+    if (typedefs.has(name)) {
+        return typedefs.get(name) as Type
+    }
+    function assignOrInject(value?: any | undefined) {
+        // Consume next argument if in typed function scope
+        const argval = scope?.args.next ?? undefined
+        return assertOrThrow(name, assert, argval !== undefined ? argval : value)
+    }
+    assignOrInject.assert = assert
+    assignOrInject.toString = function Type_toString() {
+        return name
+    }
+    typedefs.set(name, assignOrInject)
+    typedefsrev.set(assignOrInject, name)
+    return assignOrInject
+}
+
+export function extendType(base: Type, name: string, assert: TypeAssertion) {
+    const assertAll = (...assertions: TypeAssertion[]): TypeAssertion => (
+        (value: unknown) => assertions.every(assert => assert(value))
+    )
+    return createType(name, assertAll(base.assert, assert))
+}
+
 export function fn(impl: Function) {
     return (...args: unknown[]) => {
         switchScopes(impl, args)
@@ -52,11 +54,10 @@ export function fn(impl: Function) {
         if (!scope?.args.done) {
             throw new TypeError(`Too many args passed to ${impl}`)
         }
+        scope = null
         return rval
     }
 }
-
-let scope: TypedFunctionScope | null = null
 
 const switchScopes = (f: Function, args: unknown[]) => {
     const argsIter = args[Symbol.iterator]()
@@ -77,15 +78,18 @@ const switchScopes = (f: Function, args: unknown[]) => {
     })
 }
 
-export const a = (type: Type, defval: unknown = undefined) => {
-    const argval = scope?.args?.next
-    return type(argval !== undefined ? argval : defval)
-}
-
-export const A = (...types: (Type[]) | ([Type, unknown][])) => {
-    return types.map(type => Array.isArray(type) ? a(...type) : a(type))
-}
-
 export function typename(type: Type) {
     return typedefsrev.get(type)
+}
+
+function assertOrThrow(
+    name: string,
+    assert: TypeAssertion,
+    value: any,
+    errorMsg = `Cannot initialize type [${name}] with: ${value}.`,
+) {
+    if (!assert(value)) {
+        throw new TypeError(errorMsg)
+    }
+    return value
 }

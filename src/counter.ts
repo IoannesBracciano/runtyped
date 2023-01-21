@@ -1,11 +1,11 @@
-import { a, fn } from './runtyped'
+import { fn } from './runtyped'
 import { int } from './types'
 
 export function setupCounter(element: HTMLButtonElement) {
   let counter = 0
 
-  const setCounter = fn((count = a(int)) => {
-    counter = int(count)
+  const setCounter = fn((count = int()) => {
+    counter = count
     element.innerHTML = `count is ${counter}`
   })
 
