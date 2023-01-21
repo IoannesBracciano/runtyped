@@ -11,6 +11,7 @@ describe('[str]', () => {
     test('returns the string value it was called with back to the caller', () => {
         expect(str('')).toBe('')
         expect(str(String(''))).toBe('')
+        expect(str(new String('instance'))).toEqual(new String('instance'))
         expect(str('string')).toBe('string')
     })
 
