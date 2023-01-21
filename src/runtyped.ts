@@ -1,6 +1,6 @@
-export type Type = {
-    <T>(...args: any[]): T
-    assert: (...args: any[]) => boolean,
+export type Type<T = any> = {
+    (value?: unknown | undefined): T
+    assert: (value: unknown) => boolean,
 }
 
 export type TypeAssertion = (value: any) => boolean
@@ -22,14 +22,18 @@ const typedefsrev = new Map<Type, string>()
 
 let scope: TypedFunctionScope | null = null
 
-export function createType(name: string, assert: TypeAssertion) {
+export function createType<T = any>(name: string, assert: TypeAssertion): Type<T> {
     if (typedefs.has(name)) {
         return typedefs.get(name) as Type
     }
-    function assignOrInject(value?: any | undefined) {
+    function assignOrInject(value?: unknown | undefined) {
         // Consume next argument if in typed function scope
         const argval = scope?.args.next ?? undefined
-        return assertOrThrow(name, assert, argval !== undefined ? argval : value)
+        return assertOrThrow(
+            name,
+            assert,
+            argval !== undefined ? argval : value,
+        ) as T
     }
     assignOrInject.assert = assert
     assignOrInject.toString = function Type_toString() {
@@ -40,7 +44,7 @@ export function createType(name: string, assert: TypeAssertion) {
     return assignOrInject
 }
 
-export function extendType(base: Type, name: string, assert: TypeAssertion) {
+export function extendType<T, U extends T = T>(base: Type<T>, name: string, assert: TypeAssertion): Type<U> {
     const assertAll = (...assertions: TypeAssertion[]): TypeAssertion => (
         (value: unknown) => assertions.every(assert => assert(value))
     )
@@ -85,7 +89,7 @@ export function typename(type: Type) {
 function assertOrThrow(
     name: string,
     assert: TypeAssertion,
-    value: any,
+    value: unknown,
     errorMsg = `Cannot initialize type [${name}] with: ${value}.`,
 ) {
     if (!assert(value)) {
