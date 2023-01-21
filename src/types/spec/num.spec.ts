@@ -18,6 +18,9 @@ describe('[num]', () => {
         numbers.forEach(value => {
             expect(num(value)).toBe(value)
         })
+
+        expect(num(Number.MAX_VALUE)).toBe(Number.MAX_VALUE)
+        expect(num(new Number(Number.MIN_VALUE))).toEqual(new Number(Number.MIN_VALUE))
     })
 
     test('throws when called with a value that is not a number', () => {

@@ -18,6 +18,8 @@ describe('[uint]', () => {
         positiveIntegers.forEach(value => {
             expect(uint(value)).toBe(value)
         })
+
+        expect(uint(new Number(Number.MAX_SAFE_INTEGER))).toEqual(new Number(Number.MAX_SAFE_INTEGER))
     })
 
     test('throws if passed value is not a positive integer or `0`', () => {
@@ -37,6 +39,7 @@ describe('[uint]', () => {
             expect(() => uint(value)).toThrow()
         })
 
+        expect(() => uint(new Number(-1))).toThrow()
         expect(() => uint('')).toThrow()
         expect(() => uint('0')).toThrow()
         expect(() => uint(['1'])).toThrow()

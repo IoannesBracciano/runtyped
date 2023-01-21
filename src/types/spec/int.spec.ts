@@ -18,6 +18,8 @@ describe('[int]', () => {
         integers.forEach(value => {
             expect(int(value)).toBe(value)
         })
+
+        expect(int(new Number(Number.MIN_SAFE_INTEGER))).toEqual(new Number(Number.MIN_SAFE_INTEGER))
     })
 
     test('throws when called with a value that is not an integer', () => {
@@ -29,6 +31,7 @@ describe('[int]', () => {
             expect(() => int(value)).toThrow()
         })
 
+        expect(() => int(new Number(.5))).toThrow()
         expect(() => int('')).toThrow()
         expect(() => int('0')).toThrow()
         expect(() => int(['1'])).toThrow()
