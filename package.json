@@ -29,6 +29,13 @@
       ]
     }
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IoannesBracciano/runtyped"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
