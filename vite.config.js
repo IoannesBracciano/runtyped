@@ -10,7 +10,7 @@ export default defineConfig({
         'runtyped': resolve(__dirname, 'src/runtyped'),
         'types': resolve(__dirname, 'src/types'),
       },
-      name: 'runtyped',
+      name: '@ioannesbracciano/runtyped',
     },
     rollupOptions: {
       external: [],
