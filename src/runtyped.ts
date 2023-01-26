@@ -11,13 +11,14 @@ export type Type<T = any> = {
      * to be of or belong to that specific type.
      */
     (value?: unknown | undefined): T
-    assert: TypeAssertion,
+    readonly assert: TypeAssertion,
+    toString: () => string,
 }
 
 /**
  * Defines a type as a boolean classifier.
  */
-export type TypeAssertion<V = unknown> = (value: V) => boolean
+export type TypeAssertion = (value: unknown) => boolean
 
 export type TypedFunctionScope = {
     readonly args: {
@@ -46,19 +47,22 @@ export function createType<T = any>(name: string, assert: TypeAssertion): Type<T
     if (typedefs.has(name)) {
         return typedefs.get(name) as Type
     }
-    function assignOrInject(value?: unknown | undefined) {
+    const assignOrInject = Object.assign((value?: unknown) => {
         // Consume next argument if in typed function scope
         const argval = scope?.args.next ?? undefined
-        return assertOrThrow(
+        return assertOrThrow<T>(
             name,
             assert,
             argval !== undefined ? argval : value,
-        ) as T
-    }
-    assignOrInject.assert = assert
-    assignOrInject.toString = function Type_toString() {
-        return name
-    }
+        )
+    }, {
+        get assert() {
+            return assert
+        },
+        toString() {
+            return name
+        },
+    })
     typedefs.set(name, assignOrInject)
     typedefsrev.set(assignOrInject, name)
     return assignOrInject
@@ -76,7 +80,7 @@ export function createType<T = any>(name: string, assert: TypeAssertion): Type<T
 export function extendType<T, U extends T = T>(
     base: Type<T>,
     name: string,
-    assert: TypeAssertion<T>,
+    assert: TypeAssertion,
 ): Type<U> {
     const assertAll = (...assertions: TypeAssertion[]): TypeAssertion => (
         (value: unknown) => assertions.every(assert => assert(value))
@@ -161,7 +165,7 @@ export function typename(type: Type) {
     return typedefsrev.get(type)
 }
 
-function assertOrThrow(
+function assertOrThrow<T>(
     name: string,
     assert: TypeAssertion,
     value: unknown,
@@ -170,7 +174,7 @@ function assertOrThrow(
     if (!assert(value)) {
         throw new TypeError(errorMsg)
     }
-    return value
+    return value as T
 }
 
 const switchScopes = (f: Function, args: unknown[]) => {
