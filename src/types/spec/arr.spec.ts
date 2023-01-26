@@ -8,6 +8,10 @@ describe('[arr]', () => {
         expect(typename(arr)).toBe('arr')
     })
 
+    test('has default value an empty array', () => {
+        expect(arr.defval).toEqual([])
+    })
+
     test('returns any array value it was called with back to the caller', () => {
         const intArr = [Number.MIN_VALUE, -1, 0, 1, Number.MAX_SAFE_INTEGER]
         const strArr = ['', 'string']

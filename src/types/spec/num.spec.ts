@@ -8,6 +8,10 @@ describe('[num]', () => {
         expect(typename(num)).toBe('num')
     })
 
+    test('has default value 0', () => {
+        expect(num.defval).toBe(0)
+    })
+
     test('returns the numeric value it was called with back to the caller', () => {
         const numbers = Array.from({ length: 100 }, () => (
             (Math.random() * Number.MAX_SAFE_INTEGER) * (

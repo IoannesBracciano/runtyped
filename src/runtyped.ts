@@ -12,13 +12,14 @@ export type Type<T = any> = {
      */
     (value?: unknown | undefined): T
     readonly assert: TypeAssertion,
+    readonly defval: T | undefined,
     toString: () => string,
 }
 
 /**
  * Defines a type as a boolean classifier.
  */
-export type TypeAssertion = (value: unknown) => boolean
+export type TypeAssertion<T = unknown> = (value: T) => boolean
 
 export type TypedFunctionScope = {
     readonly args: {
@@ -43,7 +44,11 @@ let scope: TypedFunctionScope | null = null
  * a function to assert if a given value belongs to the type
  * @returns the newly created `Type`
  */
-export function createType<T = any>(name: string, assert: TypeAssertion): Type<T> {
+export function createType<T = any>(
+    name: string,
+    assert: TypeAssertion,
+    defval?: T,
+): Type<T> {
     if (typedefs.has(name)) {
         return typedefs.get(name) as Type
     }
@@ -58,6 +63,9 @@ export function createType<T = any>(name: string, assert: TypeAssertion): Type<T
     }, {
         get assert() {
             return assert
+        },
+        get defval() {
+            return defval
         },
         toString() {
             return name
@@ -80,12 +88,13 @@ export function createType<T = any>(name: string, assert: TypeAssertion): Type<T
 export function extendType<T, U extends T = T>(
     base: Type<T>,
     name: string,
-    assert: TypeAssertion,
+    assert: TypeAssertion<T>,
+    defval: U = base.defval as U,
 ): Type<U> {
     const assertAll = (...assertions: TypeAssertion[]): TypeAssertion => (
         (value: unknown) => assertions.every(assert => assert(value))
     )
-    return createType(name, assertAll(base.assert, assert as TypeAssertion))
+    return createType(name, assertAll(base.assert, assert as TypeAssertion), defval)
 }
 
 /**

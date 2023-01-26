@@ -10,5 +10,6 @@ export const anyOf = <T extends readonly any[]>(...types: T) => {
     return createType<T[number] extends Type<infer S> ? S : T[number]>(
         `anyOf<${tnormalized.map(typename).join(',')}>`, 
         value => tnormalized.some(({ assert }) => assert(value)),
+        tnormalized[0]?.defval,
     )
 }

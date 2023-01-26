@@ -19,6 +19,20 @@ describe('[*Account]', () => {
         expect(typename(Account)).toBe('shape{createdAt:uint,id:str,locale:anyOf<id<en_US>,id<es_MX>>,user:shape{birthday:opt<uint>,id:str,name:str,photoUrl:opt<str>}}')
     })
 
+    test('has default value `{ createdAt: 0, id: "", locale: "en_US", user: { birthday: undefined, id: "", name: "", photoUrl: undefined } }', () => {
+        expect(Account.defval).toMatchObject({
+            createdAt: 0,
+            id: '',
+            locale: 'en_US',
+            user: {
+                birthday: undefined,
+                id: '',
+                name: '',
+                photoUrl: undefined,
+            },
+        })
+    })
+
     test('returns objects that match the specified shape back to the caller', () => {
         const accountShapes = [
             {

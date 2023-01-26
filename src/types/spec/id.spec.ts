@@ -8,6 +8,10 @@ describe('[id<true>]', () => {
     test('has correct type name', () => {
         expect(typename(True)).toBe('id<true>')
     })
+
+    test('has default value `true`', () => {
+        expect(True.defval).toBe(true)
+    })
     
     test('only accepts boolean `true` and does no coercions', () => {
         expect(True(true)).toBe(true)
@@ -23,6 +27,10 @@ describe('[id<false>]', () => {
 
     test('has correct type name literal', () => {
         expect(typename(False)).toBe('id<false>')
+    })
+
+    test('has default value `false`', () => {
+        expect(False.defval).toBe(false)
     })
 
     test('only accepts boolean `false` and does no coercions', () => {
@@ -42,6 +50,10 @@ describe('[id<0>]', () => {
         expect(typename(Zero)).toBe('id<0>')
     })
 
+    test('has default value 0', () => {
+        expect(Zero.defval).toBe(0)
+    })
+
     test('only accepts numeric `0` and does no coercions', () => {
         expect(Zero(0)).toEqual(0)
         expect(() => Zero('')).toThrow()
@@ -56,6 +68,10 @@ describe('[id<1>]', () => {
 
     test('has correct type name literal', () => {
         expect(typename(One)).toBe('id<1>')
+    })
+
+    test('has default value 1', () => {
+        expect(One.defval).toBe(1)
     })
 
     test('only accepts numeric `1` and does no coercions', () => {

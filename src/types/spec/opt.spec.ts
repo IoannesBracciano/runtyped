@@ -10,6 +10,10 @@ describe('[opt<str>]', () => {
         expect(typename(optStr)).toBe('opt<str>')
     })
 
+    test('has default value undefined', () => {
+        expect(optStr.defval).toBe(undefined)
+    })
+
     test('returns the string value it was called with back to the caller', () => {
         expect(optStr('')).toBe('')
         expect(optStr(String(''))).toBe('')

@@ -8,6 +8,10 @@ describe('[int]', () => {
         expect(typename(int)).toBe('int')
     })
 
+    test('has default value 0', () => {
+        expect(int.defval).toBe(0)
+    })
+
     test('returns the integer value it was called with back to the caller', () => {
         const integers = Array.from({ length: 100 }, () => (
             Math.round(Math.random() * Number.MAX_SAFE_INTEGER) * (
