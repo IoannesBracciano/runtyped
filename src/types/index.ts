@@ -1,6 +1,7 @@
 export { anyOf } from './anyOf'
 export { arr } from './arr'
 export { arrOf } from './arrOf'
+export { f } from './f'
 export { id } from './id'
 export { int } from './int'
 export { num } from './num'
