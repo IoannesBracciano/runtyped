@@ -31,6 +31,7 @@ describe('[arr]', () => {
         expect(() => arr('0')).toThrow()
         expect(() => arr(true)).toThrow()
         expect(() => arr({})).toThrow()
+        expect(() => arr({ length: 5 })).toThrow()
         expect(() => arr(null)).toThrow()
         expect(() => arr(undefined)).toThrow()
         expect(() => arr(() => 1)).toThrow()
