@@ -155,13 +155,18 @@ export function extendType<T, U extends T = T>(
  */
 export function fn(wrapped: Function) {
     return (...args: unknown[]) => {
-        switchScopes(wrapped, args)
-        const rval = wrapped()
-        if (!scope?.args.done) {
-            throw new TypeError(`Too many args passed to ${wrapped}`)
+        const scopeOld = switchScopes(wrapped, args)
+        try {
+            const rval = wrapped()
+            if (!scope?.args.done) {
+                throw new TypeError(`Too many args passed to ${wrapped}`)
+            }
+            return rval
+        } catch (e) {
+            throw e
+        } finally {
+            scope = scopeOld
         }
-        scope = null
-        return rval
     }
 }
 
@@ -188,6 +193,7 @@ function assertOrThrow<T>(
 
 const switchScopes = (f: Function, args: unknown[]) => {
     const argsIter = args[Symbol.iterator]()
+    const scopeOld = scope
     scope = Object.freeze({
         args: {
             get done() {
@@ -203,4 +209,5 @@ const switchScopes = (f: Function, args: unknown[]) => {
         },
         function: f,
     })
+    return scopeOld
 }
