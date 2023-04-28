@@ -1,5 +1,9 @@
 import { createType, Type } from '../runtyped'
 
+/**
+ * Integer type creator.
+ * @returns {Type<number>}
+ */
 export const int: Type<number> = createType(
     'int',
     value => {
